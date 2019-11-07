@@ -1,10 +1,13 @@
 import React from 'react'
 import { Carousel, Row, Col, Card } from 'antd'
+import img1 from '../../Static/img/img1.jpg'
+import img2 from '../../Static/img/img2.jpg'
+import img3 from '../../Static/img/img3.jpg'
+import img4 from '../../Static/img/img4.jpg'
 
 
 const DashboardContent = () => {
   return (
-
     <div style={{ background: '#fff', padding: 24, minHeight: 280, height: "100%" }}>
       <Carousel autoplay style={{
         textAlign: "center",
@@ -15,16 +18,16 @@ const DashboardContent = () => {
         borderRadius: "25px 25px 0px 0px",
       }}>
         <div>
-          <img src="https://www.pscoaches.com.au/wp-content/uploads/2019/02/port-stephens-coaches-5-star-coach-3-1024x683.jpg" style={{ height: 460, width: '100%' }}></img>
+          <img src={img1} style={{ height: 460, width: '100%' }}></img>
         </div>
         <div>
-          <img src="https://hpa2015unram.files.wordpress.com/2015/02/transportation-in-lombok-transportasi-bis-bus-damri-di-lombok_4.jpg" style={{ height: 460, width: "100%" }}></img>
+          <img src={img2} style={{ height: 460, width: "100%" }}></img>
         </div>
         <div>
-          <img src="http://news.unair.ac.id/wp-content/uploads/2018/12/WhatsApp-Image-2018-12-21-at-16.23.52-1-1024x709.jpeg" style={{ height: 460, width: "100%" }}></img>
+          <img src={img3} style={{ height: 460, width: "100%" }}></img>
         </div>
         <div>
-          <img src="https://1.bp.blogspot.com/-y4uZGzcyuqY/XLmiHs8L24I/AAAAAAAAAFw/VdnFHrN6IuYEZpvW5DPaTLfABobHCPwjgCEwYBhgL/s1600/abiyyu_wijaya410-1555329748274.jpg" style={{ height: 460, width: "100%" }}></img>
+          <img src={img4} style={{ height: 460, width: "100%" }}></img>
         </div>
       </Carousel>
       <div style={{ background: '#ECECEC', padding: '30px' }}>

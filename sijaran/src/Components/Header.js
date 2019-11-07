@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import fconfig from '../config/fconfig'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-
 const Header = props => {
-
   const { Header } = Layout
   const menu = (
     <Menu>
@@ -14,7 +12,6 @@ const Header = props => {
         <Link to="/daftarkendaraan">Daftar Kendaraan</Link>
       </Menu.Item>
       <Menu.Item key="1">
-
         <Link to="/daftarpeminjaman">Daftar Peminjaman</Link>
       </Menu.Item>
     </Menu>
@@ -32,17 +29,14 @@ const Header = props => {
           <Link style={{ float: "right", color: "#fff", paddingRight: 20 }} to="/dashboardadmin"><Icon type="dashboard" />DashboardAdmin</Link>
         </div>
       )
-
     } else {
       return <Link style={{ float: "right", color: "#fff" }} to="/login"><Icon type="login" />Login</Link>
-
     }
   }
   return (
     <Header style={{ background: "#2c3e50" }}>
       <div>
         {menulogin()}
-        {/* <Link style={{ float: "right", color: "#fff" }} to="/login"><Icon type="login" />Login</Link> */}
         <Link style={{ color: "#fff" }} to="/"><Avatar size="large" icon="user" style={{ marginRight: 10 }} />SISTEM INFORMASI PEMINJAMAN KENDARAAN</Link>
       </div>
       <Menu

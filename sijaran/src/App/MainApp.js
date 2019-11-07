@@ -7,8 +7,9 @@ import Tentang from './Tentang/Tentang'
 import DaftarPeminjaman from './DaftarPeminjaman/DaftarPeminjaman'
 import DashboardAdmin from './DashboardAdmin/DashboardAdmin'
 import DaftarKendaraanAdmin from './DaftarKendaraanAdmin/DaftarKendaraanAdmin'
-import DaftarPeminjamanAdmin from './DaftarPeminjamanAdmin.js/DaftarPeminjamanAdmin'
+import DaftarPeminjamanAdmin from './DaftarPeminjamanAdmin/DaftarPeminjamanAdmin'
 import DKAdminEdit from './DaftarKendaraanAdmin/DKAdminEdit'
+import DPAdminEdit from './DaftarPeminjamanAdmin/DPAdminEdit'
 
 const MainApp = () => {
   return (
@@ -21,6 +22,7 @@ const MainApp = () => {
           <Route path="/dashboardadmin/" exact component={DashboardAdmin} />
           <Route path="/dkadmin"><DaftarKendaraanAdmin /></Route>
           <Route path="/:id/edit/dkadmin" exact children={<DKAdminEdit />}></Route>
+          <Route path="/:id/edit/dpadmin" exact children={<DPAdminEdit />}></Route>
           <Route path="/dpadmin"><DaftarPeminjamanAdmin /></Route>
           <Route path="/daftarkendaraan/" exact component={DaftarKendaraan} />
           <Route path="/daftarpeminjaman/" exact component={DaftarPeminjaman} />

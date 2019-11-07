@@ -1,12 +1,12 @@
 import React from 'react'
 import fconfig from '../../config/fconfig'
 import { useDocument } from 'react-firebase-hooks/firestore';
-import DKAEditForm from './DKAEditForm'
+import DPAEditForm from './DPAEditForm'
 
-const DKAdminEditContent = (props) => {
+const DPAdminEditContent = (props) => {
   const dummy = []
   const [value, loading, error] = useDocument(
-    fconfig.firestore().doc(`kendaraan/${props.id}`),
+    fconfig.firestore().doc(`pinjam/${props.id}`),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
@@ -15,7 +15,7 @@ const DKAdminEditContent = (props) => {
     if (value != null) {
       return (
         <div>
-          <DKAEditForm id={props.id} platt={value && dummy.map(doc => (doc.plat))} jeniss={value && dummy.map(doc => (doc.jenis))} merkk={value && dummy.map(doc => (doc.merk))} statuss={value && dummy.map(doc => (doc.status))} />
+          <DPAEditForm id={props.id} peminjamm={value && dummy.map(doc => (doc.peminjam))} kegiatann={value && dummy.map(doc => (doc.kegiatan))} tgl_pinjamm={value && dummy.map(doc => (doc.tgl_pinjam))} tgl_kembalii={value && dummy.map(doc => (doc.tgl_kembali))} key_kk={value && dummy.map(doc => (doc.key_k))} />
         </div>
       )
     }
@@ -30,4 +30,4 @@ const DKAdminEditContent = (props) => {
   </div>
   )
 }
-export default DKAdminEditContent;
+export default DPAdminEditContent;

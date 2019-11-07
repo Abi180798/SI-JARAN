@@ -4,30 +4,30 @@ import fconfig from '../../config/fconfig'
 import { Table, Typography, Button, Modal, Icon, Spin, Menu, Dropdown, Card } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import { Link } from 'react-router-dom'
-import DKAdminAdd from './DKAdminAdd';
-
-
-
-
-const DKAdminContent = () => {
+import DPAdminAdd from './DPAdminAdd';
+import { format } from 'date-fns'
+const DPAdminContent = () => {
+  const [dateNow, setDateNow] = useState("")
   const [visible, setVisible] = useState(false);
   const [value, loading, error] = useCollection(
-    fconfig.firestore().collection('kendaraan'),
+    fconfig.firestore().collection('pinjam'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
   const dummy = []
-
+  var tgl = format(new Date(), 'yyyy-MM-dd')
+  console.log(tgl)
+  // dummy.filter(doc => doc.tgl_kembali == tgl).map(doc => dummy.filter(doc => doc.tgl_kembali == tgl).map(fconfig.firestore().collection('pinjam').doc(doc.key).delete()))
   const getActionMenus = object => {
     return (
       <Menu>
         <Menu.Item key="3">Detail</Menu.Item>
         <Menu.Item key="1">
-          <p onClick={e => console.log(fconfig.firestore().collection('kendaraan').doc(object.key).delete())}>Delete</p>
+          <p onClick={e => fconfig.firestore().collection('pinjam').doc(object.key).delete()}>Delete</p>
         </Menu.Item>
         <Menu.Item key="object-update">
-          <Link to={`/${object.key}/edit/dkadmin/`}>Edit</Link>
+          <Link to={`/${object.key}/edit/dpadmin/`}>Edit</Link>
         </Menu.Item>
       </Menu>
     );
@@ -48,24 +48,29 @@ const DKAdminContent = () => {
       key: 'key',
     },
     {
-      title: 'Plat',
-      dataIndex: 'plat',
-      key: 'plat',
+      title: 'Key_Kendaraan',
+      dataIndex: 'key_k',
+      key: 'key_k',
     },
     {
-      title: 'Jenis Kendaraan',
-      dataIndex: 'jenis',
-      key: 'jenis',
+      title: 'Peminjam',
+      dataIndex: 'peminjam',
+      key: 'peminjam',
     },
     {
-      title: 'Merk Kendaraan',
-      dataIndex: 'merk',
-      key: 'merk',
+      title: 'Kegiatan',
+      dataIndex: 'kegiatan',
+      key: 'kegiatan',
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: 'Tanggal Pinjam',
+      dataIndex: 'tgl_pinjam',
+      key: 'tgl_pinjam',
+    },
+    {
+      title: 'Tanggal Kembali',
+      dataIndex: 'tgl_kembali',
+      key: 'tgl_kembali',
     },
     {
       title: 'Action',
@@ -83,10 +88,10 @@ const DKAdminContent = () => {
         <Typography>
           <Button type="primary" onClick={() => setVisible(!visible)} style={{ float: "right" }}>
             <Icon type="plus" />
-            <span>Tambah Kendaraan</span>
+            <span>Tambah Peminjam</span>
           </Button>
           <Modal
-            title="Tambah Kendaraan"
+            title="Tambah Peminjam"
             visible={visible}
             onCancel={() => setVisible(!visible)}
             footer={null}
@@ -99,9 +104,9 @@ const DKAdminContent = () => {
           // </Button>,
           // ]}
           >
-            <DKAdminAdd />
+            <DPAdminAdd />
           </Modal>
-          <Title>Daftar Kendaraan</Title>
+          <Title>Daftar Peminjam</Title>
           <Table columns={columns} dataSource={dummy} />
 
           {waitData()}
@@ -124,4 +129,4 @@ const DKAdminContent = () => {
     </div>
   )
 }
-export default DKAdminContent;
+export default DPAdminContent;

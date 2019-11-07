@@ -5,16 +5,15 @@ import { Redirect, Link, Switch, Route } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd'
 import DashboardAdminContent from '../App/DashboardAdmin/DashboardAdminContent'
 import DKAdminEditContent from '../App/DaftarKendaraanAdmin/DKAdminEditContent'
+import DPAdminEditContent from '../App/DaftarPeminjamanAdmin/DPAdminEditContent'
 
 
 const HeaderAdmin = (props) => {
   const [user] = useAuthState(fconfig.auth());
   const logout = () => {
     fconfig.auth().signOut();
-
   };
   const [collapsed, setCollapsed] = useState(false)
-
   const { Header, Sider, Content } = Layout;
   if (user) {
     return (
@@ -25,7 +24,7 @@ const HeaderAdmin = (props) => {
               <Icon type="user" />
               <span>
                 SIJARAN
-                            </span>
+              </span>
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={props.kunci} style={{ paddingTop: 35 }}>
               <Menu.Item key="1">
@@ -46,7 +45,6 @@ const HeaderAdmin = (props) => {
             <Header style={{ background: '#fff', padding: 0 }}>
               <Link style={{ float: "right", paddingRight: 30, color: "black" }} to="/login" onClick={logout}><Icon type="logout" />Logout</Link>
               <p style={{ float: "right", paddingRight: 30, color: "black" }} to="/login"><Icon type="user" />{user.email}</p>
-
               <Icon
                 style={{ paddingLeft: 20, fontSize: 20, paddingRight: 20 }}
                 className="trigger"
@@ -54,9 +52,8 @@ const HeaderAdmin = (props) => {
                 onClick={() => setCollapsed(!collapsed)}
               />
               <span style={{ fontSize: 20, fontWeight: "bold" }}>
-
                 Sistem Informasi Peminjaman Kendaraan Universitas Mataram
-                            </span>
+              </span>
             </Header>
             <Content
               style={{
@@ -64,27 +61,23 @@ const HeaderAdmin = (props) => {
                 padding: 24,
                 background: '#fff',
                 minHeight: 280,
+                height: '100%'
               }}
             >
-              {/* {console.log(props.id)} */}
               <Switch>
                 <Route exact path="/dashboardadmin" component={DashboardAdminContent}></Route>
                 <Route exact path="/dkadmin" component={props.component}></Route>
                 <Route exact path="/:id/edit/dkadmin" ><DKAdminEditContent id={props.id} /></Route>
+                <Route exact path="/:id/edit/dpadmin" ><DPAdminEditContent id={props.id} /></Route>
                 <Route exact path="/dpadmin" component={props.component}></Route>
               </Switch>
-
-
             </Content>
           </Layout>
         </Layout>
-
       </div>
     );
   }
 
-
   return <Redirect to='/login'></Redirect>
-
 }
 export default HeaderAdmin;
