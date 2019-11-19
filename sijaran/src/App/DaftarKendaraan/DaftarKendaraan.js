@@ -1,85 +1,53 @@
 import React from 'react'
-import { Layout, Card, Table, Divider, Tag } from 'antd'
+import { Layout, Card, Table, Divider, Tag, Menu, Spin, Typography, Dropdown, Button } from 'antd'
 import Header from '../../Components/Header'
 import { Switch, Route } from 'react-router-dom'
 import Footer from '../../Components/Footer'
-
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <span>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </span>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <a>Invite {record.name}</a>
-        <Divider type="vertical" />
-        <a>Delete</a>
-      </span>
-    ),
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+import { useCollection } from 'react-firebase-hooks/firestore';
+import fconfig from '../../config/fconfig'
+import { Link } from 'react-router-dom'
+import Title from 'antd/lib/skeleton/Title'
 
 const DaftarKendaraan = () => {
+  const [value, loading, error] = useCollection(
+    fconfig.firestore().collection('kendaraan'),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
+  const dummy = []
+
+  const waitData = () => {
+
+    if (!dummy === []) {
+      return (
+
+        <Spin />
+      )
+    }
+  }
+  const columns = [
+    {
+      title: 'Plat',
+      dataIndex: 'plat',
+      key: 'plat',
+    },
+    {
+      title: 'Jenis Kendaraan',
+      dataIndex: 'jenis',
+      key: 'jenis',
+    },
+    {
+      title: 'Merk Kendaraan',
+      dataIndex: 'merk',
+      key: 'merk',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+    },
+  ];
   return (
     <div>
       <Layout className="layout">
@@ -89,7 +57,46 @@ const DaftarKendaraan = () => {
             <Route path="/daftarkendaraan">
               <div style={{ background: '#ECECEC', padding: '30px' }}>
                 <Card title="Daftar Kendaraan" bordered={false} style={{ height: '100vh' }}>
-                  <Table columns={columns} dataSource={data} />
+                  <Typography>
+                    {/* <Button type="primary" onClick={() => setVisible(!visible)} style={{ float: "right" }}>
+            <Icon type="plus" />
+            <span>Tambah Kendaraan</span>
+          </Button> */}
+                    {/* <Modal
+                      title="Tambah Kendaraan"
+                      visible={visible}
+                      onCancel={() => setVisible(!visible)}
+                      footer={null}
+                    // footer={[
+                    // <Button key="back" onClick={() => setVisible(!visible)}>
+                    //   Cancel
+                    // </Button>,
+                    // <Button key="submit" type="primary" onClick={() => setVisible(!visible)}>
+                    //   Submit
+                    // </Button>,
+                    // ]}
+                    >
+                      <DKAdminAdd />
+                    </Modal> */}
+                    <Title>Daftar Kendaraan</Title>
+                    <Table columns={columns} dataSource={dummy} />
+
+                    {waitData()}
+                    < p style={{ display: 'none' }}>
+                      {error && <strong>Error: {JSON.stringify(error)}</strong>}
+                      {loading && <span>Loading...</span>}
+                      {value && (
+                        <span>
+                          Collection:
+              {value.docs.map(doc => (
+                            <React.Fragment key={doc.id}>
+                              {dummy.push(doc.data())},{''}
+                            </React.Fragment>
+                          ))}
+                        </span>
+                      )}
+                    </p>
+                  </Typography>
                 </Card>
               </div>,
                         </Route>

@@ -5,11 +5,12 @@ import { Table, Typography, Button, Modal, Icon, Spin, Menu, Dropdown, Card } fr
 import Title from 'antd/lib/typography/Title';
 import { Link } from 'react-router-dom'
 import DKAdminAdd from './DKAdminAdd';
-
+import SweetAlert from 'react-bootstrap-sweetalert'
 
 
 
 const DKAdminContent = () => {
+  const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(false);
   const [value, loading, error] = useCollection(
     fconfig.firestore().collection('kendaraan'),
@@ -22,7 +23,7 @@ const DKAdminContent = () => {
   const getActionMenus = object => {
     return (
       <Menu>
-        <Menu.Item key="3">Detail</Menu.Item>
+        <Menu.Item key="3"><p onClick={e => setShow(!show)}>Detail</p></Menu.Item>
         <Menu.Item key="1">
           <p onClick={e => console.log(fconfig.firestore().collection('kendaraan').doc(object.key).delete())}>Delete</p>
         </Menu.Item>
@@ -121,6 +122,13 @@ const DKAdminContent = () => {
           </p>
         </Typography>
       </Card>
+      <SweetAlert
+        success
+        showCancel
+        show={show}
+        onConfirm={e => setShow(!show)}
+
+      />
     </div>
   )
 }

@@ -8,6 +8,7 @@
     "firebase": "^7.2.1",
     "formik": "^1.5.8",
     "react": "^16.10.2",
+    "react-bootstrap-sweetalert": "^5.1.7",
     "react-dom": "^16.10.2",
     "react-firebase-hooks": "^2.1.0",
     "react-router-dom": "^5.1.2",
