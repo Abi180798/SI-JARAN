@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Input, Button, Select } from 'antd'
 import fconfig from '../../config/fconfig'
+import Swal from 'sweetalert2'
 
 const DKAdminAdd = () => {
   const [plat, setPlat] = useState('')
@@ -18,10 +19,18 @@ const DKAdminAdd = () => {
         setStatus('')
       })
       if (hasil != null) {
-        alert('berhasil')
+        Swal.fire(
+          'Berhasil',
+          ' ',
+          'success'
+        )
       }
     } else {
-      alert('gagal')
+      Swal.fire(
+        'Gagal',
+        ' ',
+        'error'
+      )
     }
   }
   return (

@@ -56,8 +56,8 @@ const DashboardContent = () => {
         </Row>
       </div>
       <div style={{ background: '#ECECEC', padding: '0px 30px 30px 30px' }}>
-        <Row gutter={16} >
-          <Col xs={24} sm={24} lg={16}>
+        <Row >
+          <Col xs={24} sm={24} lg={24}>
             <Card bordered={false} style={{ marginTop: 10 }}>
               <Row>
                 <Col md={12} lg={12}>
@@ -99,11 +99,11 @@ const DashboardContent = () => {
               </Row>
             </Card>
           </Col>
-          <Col xs={24} sm={24} lg={8}>
+          {/* <Col xs={24} sm={24} lg={8}>
             <Card title="Form" bordered={false} style={{ marginTop: 10 }}>
               Form Question
                   </Card>
-          </Col>
+          </Col> */}
         </Row>
       </div>
     </div>

@@ -4946,6 +4946,13 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+formik-error-focus@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/formik-error-focus/-/formik-error-focus-1.0.0.tgz#6284c50db41f9a5f3c95e4b2d56cef6f132036a3"
+  integrity sha512-EhFwo61uqb54nw5kD1saZrBqkZNQiRbTLXculMZH4RGNAyuXtnR7HEVX2TnZY0Qscfe8v170yHqpLy8zVK/qiw==
+  dependencies:
+    scroll-to-element "^2.0.3"
+
 formik@^1.5.8:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/formik/-/formik-1.5.8.tgz#eee8cd345effe46839bc748c7f920486f12f14b0"
@@ -9637,11 +9644,6 @@ react-app-polyfill@^1.0.4:
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
 
-react-bootstrap-sweetalert@^5.1.7:
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.1.7.tgz#2865d77e3613cdc6e6239e49e5165dc66f499023"
-  integrity sha512-0IvGP7wQNWkLLnG1mlLZ9/NsD5QfJX2AenYSEHxcL/MQgAOfsUDjDnYxq/U/nJ/pt1+Y2XggmOoHNh+xPWRn6g==
-
 react-dev-utils@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.1.0.tgz#3ad2bb8848a32319d760d0a84c56c14bdaae5e81"
@@ -10346,6 +10348,13 @@ schema-utils@^2.2.0:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"
 
+scroll-to-element@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/scroll-to-element/-/scroll-to-element-2.0.3.tgz#99b404fc6a09fe73f3c062cd5b8a14efb6404e4d"
+  integrity sha512-5herPcm9jMfQgRwu94lH5mei+2YhipR4RQ2nAvnBxJb2tG+P7O0ctOKAaAZBXbBejnn+MImh3wrAUA5EcLnjEQ==
+  dependencies:
+    raf "^3.4.0"
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -10993,6 +11002,11 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+sweetalert2@^9.3.17:
+  version "9.3.17"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.3.17.tgz#874c18d8c4d3ebb13b11a3e00e50b82506bd422f"
+  integrity sha512-FmIKj+xzQ2fxkwVo9CA2UOjViRJXjn3I0wZSnEU4vOqdKJjo0nOdb7Su8qRckPpiEaas/qhPUcnl5ch+fEm9Bw==
 
 symbol-tree@^3.2.2:
   version "3.2.4"

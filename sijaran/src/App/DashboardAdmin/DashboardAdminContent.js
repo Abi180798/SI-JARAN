@@ -1,10 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Row, Card, Col, Spin } from 'antd'
+import { useCollection } from 'react-firebase-hooks/firestore';
+import fconfig from '../../config/fconfig'
+import JmlK from './JmlK';
 
-const DashboardAdminContent = () => {
+const DashboardAdminContent = props => {
+	const [value, loading, error] = useCollection(
+		fconfig.firestore().collection('pinjam'),
+		{
+			snapshotListenOptions: { includeMetadataChanges: true },
+		}
+	);
+	const dummy = []
+	const waitData = () => {
+		if (!dummy === []) {
+			return (
+
+				<Spin />
+			)
+		}
+	}
 	return (
 		<div>
-			<Link to="/">Visit Site User</Link>
+			{waitData()}
+			< p style={{ display: 'none' }}>
+				{error && <strong>Error: {JSON.stringify(error)}</strong>}
+				{loading && <span>Loading...</span>}
+				{value && (
+					<span>
+						Collection:
+              {value.docs.map(doc => (
+							<React.Fragment key={doc.id}>
+								{dummy.push(doc.data())},{''}
+							</React.Fragment>
+						))}
+					</span>
+				)}
+			</p>
+			<p style={{ fontSize: 20 }}>Selamat Datang <b>Admin</b> Kunjungi situs User
+			<Link to="/"> Disini</Link></p>
+			<Row>
+				<Col md={12} lg={12}>
+					<Card title="Jumlah Kendaraan" bordered={true} style={{ fontSize: 30, margin: 5 }}>
+						<JmlK />
+					</Card>
+				</Col>
+				<Col md={12} lg={12}>
+					<Card title="Jumlah Peminjaman" bordered={true} style={{ fontSize: 30, margin: 5 }}>
+						<b>{dummy.length}</b>
+					</Card>
+				</Col>
+			</Row>
 		</div>
 	)
 }

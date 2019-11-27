@@ -7,12 +7,14 @@
     "date-fns": "^2.7.0",
     "firebase": "^7.2.1",
     "formik": "^1.5.8",
+    "formik-error-focus": "^1.0.0",
+    "moment": "^2.24.0",
     "react": "^16.10.2",
-    "react-bootstrap-sweetalert": "^5.1.7",
     "react-dom": "^16.10.2",
     "react-firebase-hooks": "^2.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "sweetalert2": "^9.3.17",
     "yup": "^0.27.0"
   },
   "scripts": {

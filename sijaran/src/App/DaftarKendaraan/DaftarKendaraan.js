@@ -6,8 +6,7 @@ import Footer from '../../Components/Footer'
 import { useCollection } from 'react-firebase-hooks/firestore';
 import fconfig from '../../config/fconfig'
 import { Link } from 'react-router-dom'
-import Title from 'antd/lib/skeleton/Title'
-
+import Title from 'antd/lib/typography/Title';
 const DaftarKendaraan = () => {
   const [value, loading, error] = useCollection(
     fconfig.firestore().collection('kendaraan'),
@@ -56,28 +55,9 @@ const DaftarKendaraan = () => {
           <Switch>
             <Route path="/daftarkendaraan">
               <div style={{ background: '#ECECEC', padding: '30px' }}>
-                <Card title="Daftar Kendaraan" bordered={false} style={{ height: '100vh' }}>
+                <Card bordered={false} style={{ height: '100vh' }}>
                   <Typography>
-                    {/* <Button type="primary" onClick={() => setVisible(!visible)} style={{ float: "right" }}>
-            <Icon type="plus" />
-            <span>Tambah Kendaraan</span>
-          </Button> */}
-                    {/* <Modal
-                      title="Tambah Kendaraan"
-                      visible={visible}
-                      onCancel={() => setVisible(!visible)}
-                      footer={null}
-                    // footer={[
-                    // <Button key="back" onClick={() => setVisible(!visible)}>
-                    //   Cancel
-                    // </Button>,
-                    // <Button key="submit" type="primary" onClick={() => setVisible(!visible)}>
-                    //   Submit
-                    // </Button>,
-                    // ]}
-                    >
-                      <DKAdminAdd />
-                    </Modal> */}
+
                     <Title>Daftar Kendaraan</Title>
                     <Table columns={columns} dataSource={dummy} />
 

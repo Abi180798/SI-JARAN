@@ -5,8 +5,7 @@ import { Table, Typography, Button, Modal, Icon, Spin, Menu, Dropdown, Card } fr
 import Title from 'antd/lib/typography/Title';
 import { Link } from 'react-router-dom'
 import DKAdminAdd from './DKAdminAdd';
-import SweetAlert from 'react-bootstrap-sweetalert'
-
+import Swal from 'sweetalert2'
 
 
 const DKAdminContent = () => {
@@ -19,13 +18,40 @@ const DKAdminContent = () => {
     }
   );
   const dummy = []
-
+  function delItem(isi) {
+    Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Hapus!',
+      cancelButtonText: 'Kembali'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Terhapus!',
+          ' ',
+          'success'
+        )
+        fconfig.firestore().collection('kendaraan').doc(isi).delete()
+      }
+    })
+  }
   const getActionMenus = object => {
     return (
       <Menu>
-        <Menu.Item key="3"><p onClick={e => setShow(!show)}>Detail</p></Menu.Item>
+        <Menu.Item key="3"><p onClick={e => Swal.fire(
+          'Good job!',
+          'You clicked the button!',
+          'success'
+        )}>Detail</p></Menu.Item>
         <Menu.Item key="1">
-          <p onClick={e => console.log(fconfig.firestore().collection('kendaraan').doc(object.key).delete())}>Delete</p>
+          <p onClick={e => Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+          ), e => console.log(delItem(object.key))}>Delete</p>
         </Menu.Item>
         <Menu.Item key="object-update">
           <Link to={`/${object.key}/edit/dkadmin/`}>Edit</Link>
@@ -122,13 +148,6 @@ const DKAdminContent = () => {
           </p>
         </Typography>
       </Card>
-      <SweetAlert
-        success
-        showCancel
-        show={show}
-        onConfirm={e => setShow(!show)}
-
-      />
     </div>
   )
 }

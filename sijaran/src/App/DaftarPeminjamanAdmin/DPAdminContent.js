@@ -17,7 +17,7 @@ const DPAdminContent = () => {
   );
   const dummy = []
   var tgl = format(new Date(), 'yyyy-MM-dd')
-  console.log(tgl)
+  // console.log(tgl)
   // dummy.filter(doc => doc.tgl_kembali == tgl).map(doc => dummy.filter(doc => doc.tgl_kembali == tgl).map(fconfig.firestore().collection('pinjam').doc(doc.key).delete()))
   const getActionMenus = object => {
     return (

@@ -5,6 +5,8 @@ import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
 import fconfig from '../../config/fconfig'
 import Title from 'antd/lib/typography/Title'
+import FormikErrorFocus from 'formik-error-focus'
+import Swal from 'sweetalert2'
 
 
 const DKAEditForm = ({ values,
@@ -86,6 +88,14 @@ const DKAEditForm = ({ values,
               <Button htmlType="submit">Submit</Button>
             </div>
           </Form.Item>
+          <FormikErrorFocus
+            // See scroll-to-element for configuration options: https://www.npmjs.com/package/scroll-to-element
+            offset={0}
+            align={'top'}
+            focusDelay={200}
+            ease={'linear'}
+            duration={1000}
+          />
         </Form>
       </Typography>
     </div>
@@ -123,7 +133,11 @@ export default withFormik({
       try {
         const editgan = fconfig.firestore().collection('kendaraan').doc(props.id).set(values)
         if (editgan != null) {
-          alert('berhasil')
+          Swal.fire(
+            'Berhasil',
+            ' ',
+            'success'
+          )
         }
       } catch (e) {
         setSubmitting(false);
