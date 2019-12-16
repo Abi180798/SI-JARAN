@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "sijaran": "sijaran-unram",
+    "default": "sijaran-unram",
+    "sijaran-unram": "sijaran-unram"
+  }
+}
