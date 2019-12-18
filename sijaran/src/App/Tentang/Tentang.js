@@ -41,7 +41,7 @@ const Tentang = () => {
                               width: 500,
                             }}></img>
                           </div>
-                          <text>Bagian dari pembentukan sudat terdapat: Kopsurat asal fakultas yang diutus, Waktu, Nomor Surat, Perihal pengajuan surat, Utusan surat, Salam pembuka, Isi surat (lengkap dengan waktu peminjaman), Salam penutup, Tertera untuk Ketua kegiatan, Sekertaris Kegiatan, dan Mengetahui Dekan Fakultas  </text>
+                          <text>Bagian dari pembuatan surat terdapat point yang perlu diperhatikan: Kopsurat asal fakultas yang diutus, Waktu, Nomor Surat, Perihal pengajuan surat, Utusan surat, Salam pembuka, Isi surat (lengkap dengan waktu peminjaman), Salam penutup, Tertera untuk Ketua kegiatan, Sekertaris Kegiatan, dan Mengetahui Dekan Fakultas  </text>
                         </li>
                         <li>
                           <h3>Sampaikan ke pada protokol terkait peminjaman kendaraan dan menunggu pengarahan</h3>
