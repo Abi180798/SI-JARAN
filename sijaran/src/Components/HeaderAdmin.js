@@ -6,13 +6,52 @@ import { Layout, Menu, Icon } from 'antd'
 import DashboardAdminContent from '../App/DashboardAdmin/DashboardAdminContent'
 import DKAdminEditContent from '../App/DaftarKendaraanAdmin/DKAdminEditContent'
 import DPAdminEditContent from '../App/DaftarPeminjamanAdmin/DPAdminEditContent'
-
+import Swal from 'sweetalert2'
 
 const HeaderAdmin = (props) => {
   const [user] = useAuthState(fconfig.auth());
   const logout = () => {
-    fconfig.auth().signOut();
+    Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Logout!',
+      cancelButtonText: 'Kembali'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Berhasil!',
+          ' ',
+          'success'
+        )
+        fconfig.auth().signOut();
+      }
+    })
+
+
   };
+  function delItem(isi) {
+    Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Hapus!',
+      cancelButtonText: 'Kembali'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Terhapus!',
+          ' ',
+          'success'
+        )
+        fconfig.firestore().collection('kendaraan').doc(isi).delete()
+      }
+    })
+  }
   const [collapsed, setCollapsed] = useState(false)
   const { Header, Sider, Content } = Layout;
   if (user) {

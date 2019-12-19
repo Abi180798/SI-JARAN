@@ -41,17 +41,8 @@ const DKAdminContent = () => {
   const getActionMenus = object => {
     return (
       <Menu>
-        <Menu.Item key="3"><p onClick={e => Swal.fire(
-          'Good job!',
-          'You clicked the button!',
-          'success'
-        )}>Detail</p></Menu.Item>
         <Menu.Item key="1">
-          <p onClick={e => Swal.fire(
-            'Good job!',
-            'You clicked the button!',
-            'success'
-          ), e => console.log(delItem(object.key))}>Delete</p>
+          <p onClick={e => console.log(delItem(object.key))}>Delete</p>
         </Menu.Item>
         <Menu.Item key="object-update">
           <Link to={`/${object.key}/edit/dkadmin/`}>Edit</Link>

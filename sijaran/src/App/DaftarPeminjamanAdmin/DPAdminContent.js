@@ -5,6 +5,7 @@ import { Table, Typography, Button, Modal, Icon, Spin, Menu, Dropdown, Card } fr
 import Title from 'antd/lib/typography/Title';
 import { Link } from 'react-router-dom'
 import DPAdminAdd from './DPAdminAdd';
+import Swal from 'sweetalert2'
 import { format } from 'date-fns'
 const DPAdminContent = () => {
   const [dateNow, setDateNow] = useState("")
@@ -17,14 +18,33 @@ const DPAdminContent = () => {
   );
   const dummy = []
   var tgl = format(new Date(), 'yyyy-MM-dd')
+  function delItem(isi) {
+    Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Hapus!',
+      cancelButtonText: 'Kembali'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Terhapus!',
+          ' ',
+          'success'
+        )
+        fconfig.firestore().collection('pinjam').doc(isi).delete()
+      }
+    })
+  }
   // console.log(tgl)
   // dummy.filter(doc => doc.tgl_kembali == tgl).map(doc => dummy.filter(doc => doc.tgl_kembali == tgl).map(fconfig.firestore().collection('pinjam').doc(doc.key).delete()))
   const getActionMenus = object => {
     return (
       <Menu>
-        <Menu.Item key="3">Detail</Menu.Item>
         <Menu.Item key="1">
-          <p onClick={e => fconfig.firestore().collection('pinjam').doc(object.key).delete()}>Delete</p>
+          <p onClick={e => delItem(object.key)}>Delete</p>
         </Menu.Item>
         <Menu.Item key="object-update">
           <Link to={`/${object.key}/edit/dpadmin/`}>Edit</Link>

@@ -3,6 +3,7 @@ import { Form, Input, Button, Select, Spin } from 'antd'
 import fconfig from '../../config/fconfig'
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { DatePicker } from 'antd';
+import Swal from 'sweetalert2'
 
 const { RangePicker } = DatePicker;
 const DPAdminAdd = () => {
@@ -30,12 +31,20 @@ const DPAdminAdd = () => {
         setDate({})
       })
       if (hasil !== null) {
-        alert('berhasil')
+        Swal.fire(
+          'Berhasil',
+          ' ',
+          'success'
+        )
         { dummy.filter((doc => doc.key === key_k)).map(doc => fconfig.firestore().collection('kendaraan').doc(key_k).set({ key: key_k, plat: doc.plat, jenis: doc.jenis, merk: doc.merk, status: "Dipinjam" })) }
 
       }
     } else {
-      alert('gagal')
+      Swal.fire(
+        'Gagal',
+        ' ',
+        'warning'
+      )
     }
   }
   const waitData = () => {

@@ -3,7 +3,7 @@ import { Layout, Menu, Dropdown, Avatar, Icon } from 'antd'
 import { Link } from 'react-router-dom'
 import fconfig from '../config/fconfig'
 import { useAuthState } from 'react-firebase-hooks/auth'
-
+import Swal from 'sweetalert2'
 const Header = props => {
   const { Header } = Layout
   const menu = (
@@ -17,7 +17,25 @@ const Header = props => {
     </Menu>
   );
   const logout = () => {
-    fconfig.auth().signOut();
+    Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Logout!',
+      cancelButtonText: 'Kembali'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Berhasil!',
+          ' ',
+          'success'
+        )
+        fconfig.auth().signOut();
+      }
+    })
+
 
   };
   const [user] = useAuthState(fconfig.auth());

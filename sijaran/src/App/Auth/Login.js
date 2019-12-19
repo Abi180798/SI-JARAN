@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import fconfig from '../../config/fconfig'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Redirect, Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
 const Login = ({
@@ -85,6 +86,11 @@ const FormikApp = withFormik({
       try {
         console.log(values);
         fconfig.auth().signInWithEmailAndPassword(values.email, values.password);
+        Swal.fire(
+          'Berhasil',
+          ' ',
+          'success'
+        )
       } catch (e) {
         setSubmitting(false);
       }
