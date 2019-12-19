@@ -42,12 +42,12 @@ const DashboardAdminContent = props => {
 			<Link to="/"> Disini</Link></p>
 			<Row>
 				<Col md={12} lg={12}>
-					<Card title="Jumlah Kendaraan" bordered={true} style={{ fontSize: 30, margin: 5 }}>
+					<Card title={<div style={{ color: '#fff' }}>Jumlah Kendaraan</div>} bordered={true} style={{ color: "#fff", fontSize: 30, margin: 5, background: '#001529' }}>
 						<JmlK />
 					</Card>
 				</Col>
-				<Col md={12} lg={12}>
-					<Card title="Jumlah Peminjaman" bordered={true} style={{ fontSize: 30, margin: 5 }}>
+				<Col md={12} lg={12} style={{ color: "#fff" }}>
+					<Card title={<div style={{ color: "#fff" }}>Jumlah Peminjaman</div>} bordered={true} style={{ color: "#fff", fontSize: 30, margin: 5, background: '#001529' }}>
 						<b>{dummy.length}</b>
 					</Card>
 				</Col>

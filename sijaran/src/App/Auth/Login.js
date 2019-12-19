@@ -32,7 +32,7 @@ const Login = ({
         <Col span={8} offset={8}>
           <Card>
             <Form onSubmit={handleSubmit}>
-              <h1>Login</h1>
+              <h1 style={{ textAlign: 'center' }}>Login</h1><hr />
               <Form.Item label="Email">
                 <Input
                   prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
